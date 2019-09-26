@@ -1,0 +1,84 @@
+package br.com.aps;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+public class CriarBanco extends SQLiteOpenHelper{
+    private static final String NOME_BANCO = "banco.db";
+    private static final String TABELA = "clientes";
+    private static final String ID = "_id";
+    private static final String NOME = "nome";
+    private static final String ENDERECO = "endereco";
+    private static final String CELULAR = "celular";
+    private static final String EMAIL = "email";
+    private static final String CPF = "cpf";
+    private static final String DATA_NASCIMENTO = "data_nascimento";
+    private static final String CATEGORIA_LEITOR = "categoria_leitor";
+    private static final int VERSAO = 1;
+
+    public CriarBanco(Context context) {
+        //super(context, name, factory, version);
+        super(context, getNomeBanco(), null, getVERSAO());
+
+    }
+
+    public static String getNomeBanco() {
+        return NOME_BANCO;
+    }
+
+    public static String getTABELA() {
+        return TABELA;
+    }
+
+    public static String getID() {
+        return ID;
+    }
+
+    public static String getNOME() {
+        return NOME;
+    }
+
+    public static String getENDERECO() {
+        return ENDERECO;
+    }
+
+    public static String getCELULAR() {
+        return CELULAR;
+    }
+
+    public static String getEMAIL() {
+        return EMAIL;
+    }
+
+    public static String getCPF() {
+        return CPF;
+    }
+
+    public static String getDataNascimento() {
+        return DATA_NASCIMENTO;
+    }
+
+
+    public static String getCategoriaLeitor() {
+        return CATEGORIA_LEITOR;
+    }
+
+    public static int getVERSAO() {
+        return VERSAO;
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        String sql = "CREATE TABLE "+ TABELA + "("+ ID + " integer primary key autoincrement,"
+                + NOME + " text, " + ENDERECO + " text, " + CELULAR + " text, " + EMAIL + " text, "
+                + CPF + " text, " + DATA_NASCIMENTO + " text, " + CATEGORIA_LEITOR + " text " +")";
+
+        sqLiteDatabase.execSQL(sql);
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ TABELA);
+        onCreate(sqLiteDatabase);
+    }
+}
