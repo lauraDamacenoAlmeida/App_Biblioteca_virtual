@@ -14,13 +14,13 @@ public class CriarBanco extends SQLiteOpenHelper{
     private static final String DATA_NASCIMENTO = "data_nascimento";
     private static final String CATEGORIA_LEITOR = "categoria_leitor";
     private static final int VERSAO = 1;
-
+//Método para criar o banco de dados, onde por parametro é passado o nome, contexto e versão do banco
     public CriarBanco(Context context) {
         //super(context, name, factory, version);
         super(context, getNomeBanco(), null, getVERSAO());
 
     }
-
+//Métodos para acessar os valores das variáveis privadas
     public static String getNomeBanco() {
         return NOME_BANCO;
     }
@@ -65,7 +65,7 @@ public class CriarBanco extends SQLiteOpenHelper{
     public static int getVERSAO() {
         return VERSAO;
     }
-
+// assim que o banco é criado, é criado uma tabela com as seguintes colunas passadas pelo "( )", como por exemplo ID, Nome, endereç, celular, email,CPF, data de nascimento, categoria de leitores
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sql = "CREATE TABLE "+ TABELA + "("+ ID + " integer primary key autoincrement,"
