@@ -38,7 +38,7 @@ public class cadastrarClientes extends AppCompatActivity {
                 String catLeitorString = categoria_leitor.getText().toString();
 
                 String resultado;
-                resultado = crud.insereDado(nomeString,enderecoString,celularString,emailString,cpfString,nascimentoString,catLeitorString);
+                resultado = crud.insereCliente(nomeString,enderecoString,celularString,emailString,cpfString,nascimentoString,catLeitorString);
                 Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
 
 

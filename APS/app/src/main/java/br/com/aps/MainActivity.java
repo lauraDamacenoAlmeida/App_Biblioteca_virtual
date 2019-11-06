@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         botao_Cadastrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent it = new Intent(MainActivity.this, TelaCadastrar.class);
+                Intent it = new Intent(MainActivity.this, TelaCadastrarCliente.class);
 
                 startActivity(it);
             }
@@ -34,10 +34,13 @@ public class MainActivity extends AppCompatActivity {
         botao_Consultar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent it = new Intent(MainActivity.this, TelaConsultar.class);
+                Intent it = new Intent(MainActivity.this, TelaAlterarCliente.class);
 
                 startActivity(it);
             }
         });
+
+
+
     }
 }

@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class CriarBanco extends SQLiteOpenHelper{
     private static final String NOME_BANCO = "banco.db";
     private static final String TABELA = "clientes";
+    private static final String TABELA_CATEGORIA_LEITORES = "categoria_leitores";
     private static final String ID = "_id";
     private static final String NOME = "nome";
     private static final String ENDERECO = "endereco";
@@ -13,7 +14,11 @@ public class CriarBanco extends SQLiteOpenHelper{
     private static final String CPF = "cpf";
     private static final String DATA_NASCIMENTO = "data_nascimento";
     private static final String CATEGORIA_LEITOR = "categoria_leitor";
+    private static final int COD_CATEGORIA = "categoria_leitor";
+
+
     private static final int VERSAO = 1;
+
 //Método para criar o banco de dados, onde por parametro é passado o nome, contexto e versão do banco
     public CriarBanco(Context context) {
         //super(context, name, factory, version);
@@ -68,11 +73,16 @@ public class CriarBanco extends SQLiteOpenHelper{
 // assim que o banco é criado, é criado uma tabela com as seguintes colunas passadas pelo "( )", como por exemplo ID, Nome, endereç, celular, email,CPF, data de nascimento, categoria de leitores
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "CREATE TABLE "+ TABELA + "("+ ID + " integer primary key autoincrement,"
+        String tabela_categoria_leitores = "CREATE TABLE "+ TABELA_CATEGORIA_LEITORES + "("+ COD_CATEGORIA + " int  primary key autoincrement,"
                 + NOME + " text, " + ENDERECO + " text, " + CELULAR + " text, " + EMAIL + " text, "
-                + CPF + " text, " + DATA_NASCIMENTO + " text, " + CATEGORIA_LEITOR + " text " +")";
+                + " text, " + DATA_NASCIMENTO + " text, " + CATEGORIA_LEITOR + " text foreign key("+CATEGORIA+") references " +TABELA_CATEGORIA_LEITORES+"("+CATEGORIA+"));";
 
-        sqLiteDatabase.execSQL(sql);
+        String tabela_clientes = "CREATE TABLE "+ TABELA + "("+ CPF + " text primary key,"
+                + NOME + " text, " + ENDERECO + " text, " + CELULAR + " text, " + EMAIL + " text, "
+                + " text, " + DATA_NASCIMENTO + " text, " + CATEGORIA_LEITOR + " text foreign key("+CATEGORIA+") references " +TABELA_CATEGORIA_LEITORES+"("+CATEGORIA+"));";
+
+        sqLiteDatabase.execSQL(tabela_clientes);
+        sqLiteDatabase.execSQL(tabela_categoria_leitores);
 
     }
 
