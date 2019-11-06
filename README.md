@@ -15,7 +15,7 @@ Atualmente o aplicativo permite:
 4. Inclusão, alteração e deleção de categoria de livros
 
 ### Desenho do Banco de Dados
-Para construirmos a estrutura pedidada pelo cliente, fizemos um desenho do banco de dados relacional MySQL com todas as tabelas, relacionamentos e dados necessários.
+Para construirmos a estrutura pedida pelo cliente, fizemos um desenho do banco de dados relacional MySQL com todas as tabelas, relacionamentos e dados necessários.
 
 ![alt text](https://github.com/lauraDamacenoAlmeida/App_Biblioteca_virtual/blob/master/Classes.png)
 
